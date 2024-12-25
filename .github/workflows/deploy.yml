@@ -16,7 +16,9 @@ jobs:
           cache: 'npm'
           
       - name: Install Dependencies
-        run: npm ci
+        run: |
+          npm ci
+          cd worker && npm ci
         
       - name: Build
         run: npm run build
@@ -28,6 +30,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: 'worker'
         env:
           CLOUDFLARE_D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
           CLOUDFLARE_KV_NAMESPACE_ID: ${{ secrets.CLOUDFLARE_KV_NAMESPACE_ID }} 

@@ -6,20 +6,16 @@ compatibility_date = "2024-01-01"
 [[d1_databases]]
 binding = "DB"
 database_name = "blog-db"
-database_id = "${CLOUDFLARE_D1_DATABASE_ID}"  # 使用环境变量
+database_id = "${CLOUDFLARE_D1_DATABASE_ID}"
 
 # KV 命名空间配置
 [[kv_namespaces]]
 binding = "BLOG_CACHE"
-id = "${CLOUDFLARE_KV_NAMESPACE_ID}"  # 使用环境变量
-
-[site]
-bucket = "./.next"
+id = "${CLOUDFLARE_KV_NAMESPACE_ID}"
 
 [build]
-command = "npm run build"
-watch_dir = "app"
+command = "npm run build:worker"
+cwd = "worker"
 
-[routes]
-pattern = "/api/*"
-zone_name = "blog-ai-mine.pages.dev" 
+[site]
+bucket = "./.next" 
