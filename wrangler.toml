@@ -12,4 +12,7 @@ database_id = "927b7369-cae7-40ad-9aa2-92a306513b6"
 
 [[kv_namespaces]]
 binding = "BLOG_CACHE"
-id = "f1a95ecbf5f74a39af3bd758b116f67a" 
+id = "f1a95ecbf5f74a39af3bd758b116f67a"
+
+[site]
+bucket = ".next" 

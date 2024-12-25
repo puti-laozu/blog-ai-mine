@@ -1,10 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'standalone',
   images: {
     unoptimized: true,
-    domains: ['raw.githubusercontent.com', 'github.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+    ],
   },
-  output: 'standalone'
 }
 
 module.exports = nextConfig 

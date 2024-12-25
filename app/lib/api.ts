@@ -1,8 +1,7 @@
 import { Post, Tag, Comment } from '../types';
 
-const baseUrl = typeof window === 'undefined' 
-  ? 'http://127.0.0.1:8787'  // 在服务器端构建时使用
-  : '';  // 在浏览器中使用相对路径
+// 在 Cloudflare Pages 上使用相对路径
+const baseUrl = '';
 
 export async function fetchPosts(): Promise<Post[]> {
   const res = await fetch(`${baseUrl}/api/posts`);
