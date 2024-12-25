@@ -2,6 +2,10 @@ name = "blog-ai-mine"
 compatibility_date = "2023-12-25"
 main = "worker/src/index.ts"
 
+[build]
+command = "npm run build"
+pages_build_output_dir = ".next"
+
 [[d1_databases]]
 binding = "DB"
 database_name = "blog-db"
