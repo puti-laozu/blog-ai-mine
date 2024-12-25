@@ -1,48 +1,22 @@
-import { fetchPostBySlug } from '@/lib/api';
-import Layout from '@/components/Layout';
+import { fetchPostBySlug, fetchPosts } from '@/lib/api';
+import { Post } from '@/types';
 import Comments from '@/components/Comments';
-import { notFound } from 'next/navigation';
-import { formatDate } from '@/lib/utils';
 
-export default async function PostPage({
-  params: { slug }
-}: {
-  params: { slug: string };
-}) {
-  const post = await fetchPostBySlug(slug);
+export async function generateStaticParams() {
+  const posts = await fetchPosts();
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
+
+export default async function PostPage({ params }: { params: { slug: string } }) {
+  const post = await fetchPostBySlug(params.slug);
   
-  if (!post) {
-    notFound();
-  }
-
   return (
-    <Layout>
-      <article className="prose lg:prose-xl mx-auto">
-        {post.cover_image && (
-          <img
-            src={post.cover_image}
-            alt={post.title}
-            className="w-full aspect-video object-cover rounded-lg"
-          />
-        )}
-        <h1>{post.title}</h1>
-        <div className="flex items-center gap-4 text-gray-500 mb-8">
-          <time>{formatDate(post.created_at)}</time>
-          <span>阅读量: {post.view_count || 0}</span>
-        </div>
-        <div dangerouslySetInnerHTML={{ __html: post.content }} />
-        <div className="mt-8">
-          {post.tags?.map(tag => (
-            <span
-              key={tag.id}
-              className="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"
-            >
-              #{tag.name}
-            </span>
-          ))}
-        </div>
-      </article>
+    <article className="max-w-4xl mx-auto px-4 py-8">
+      <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
+      <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: post.content }} />
       <Comments postId={post.id} />
-    </Layout>
+    </article>
   );
 } 

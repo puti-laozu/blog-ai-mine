@@ -1,9 +1,14 @@
-name = "blog-ai-mine"
-compatibility_date = "2023-12-25"
-
 [build]
 command = "npm run build"
-pages_build_output_dir = ".next"
+cwd = "."
+dist = ".next"
+
+[site]
+bucket = ".next"
+
+[env.production]
+name = "blog-ai-mine"
+workers_dev = true
 
 [[d1_databases]]
 binding = "DB"
@@ -12,7 +17,4 @@ database_id = "927b7369-cae7-40ad-9aa2-92a306513b6"
 
 [[kv_namespaces]]
 binding = "BLOG_CACHE"
-id = "f1a95ecbf5f74a39af3bd758b116f67a"
-
-[site]
-bucket = ".next" 
+id = "f1a95ecbf5f74a39af3bd758b116f67a" 
