@@ -2,9 +2,6 @@
 const nextConfig = {
   images: {
     domains: ['raw.githubusercontent.com', 'github.com'],
-  },
-  experimental: {
-    serverActions: true,
   }
 }
 
