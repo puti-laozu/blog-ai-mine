@@ -1,4 +1,4 @@
-name: Deploy to Cloudflare Workers
+name: Deploy to Cloudflare Pages
 
 on:
   push:
@@ -18,16 +18,11 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-          
       - name: Install Dependencies
-        run: pnpm install
+        run: npm install
 
       - name: Build Project
-        run: pnpm build
+        run: npm run build
         env:
           BLOG_TITLE: ${{ secrets.BLOG_TITLE }}
           BLOG_DESCRIPTION: ${{ secrets.BLOG_DESCRIPTION }}
@@ -35,11 +30,11 @@ jobs:
           ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
           JWT_SECRET: ${{ secrets.JWT_SECRET }}
 
-      - name: Deploy to Cloudflare Workers
+      - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          command: deploy
+          command: pages publish dist --project-name=my-blog
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }} 

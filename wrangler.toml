@@ -1,28 +1,29 @@
 # Cloudflare 配置示例
 name = "my-blog"
 compatibility_date = "2024-01-01"
-main = "src/worker.ts"
 
 [build]
-command = "pnpm install && pnpm build"
+command = "npm install && npm run build"
 output_dir = "dist"
-
-[build.upload]
-format = "service-worker"
 
 [site]
 bucket = "./public"
-pages_build_output_dir = "dist"
 
-[vars]
-BLOG_TITLE = "My Blog"
-BLOG_DESCRIPTION = "A personal blog powered by Cloudflare"
+[env.production]
+name = "my-blog-prod"
+vars = { ENVIRONMENT = "production" }
 
+[env.development]
+name = "my-blog-dev"
+vars = { ENVIRONMENT = "development" }
+
+# KV 命名空间配置
+[[kv_namespaces]]
+binding = "KV"
+id = "your-kv-namespace-id"
+
+# D1 数据库配置
 [[d1_databases]]
 binding = "DB"
 database_name = "blog_db"
-database_id = "your-database-id"
-
-[[kv_namespaces]]
-binding = "KV"
-id = "your-kv-namespace-id" 
+database_id = "your-database-id" 
