@@ -1,3 +1,5 @@
+/// <reference types="@cloudflare/workers-types" />
+
 declare module 'itty-router' {
   export class Router {
     constructor(options?: { base?: string });
@@ -13,4 +15,9 @@ declare module 'itty-router-extras' {
   export function json(body: any, init?: ResponseInit): Response;
   export function error(code: number, message: string): Response;
   export function status(code: number, message?: string): Response;
+}
+
+interface Env {
+  DB: D1Database;
+  BLOG_CACHE: KVNamespace;
 } 
