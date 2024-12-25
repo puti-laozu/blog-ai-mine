@@ -1,5 +1,5 @@
 import { verifyAuth } from '../middleware/auth';
-import { Env } from '../types';
+import { Env } from '../types/index';
 
 export async function handleAdminRequest(request: Request, env: Env) {
   // 验证权限

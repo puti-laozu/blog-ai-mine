@@ -14,8 +14,6 @@ export interface Post {
   updated_at?: number;
 }
 
-export type PostStatus = 'draft' | 'published';
-
 export interface Comment {
   id: string;
   post_id: string;

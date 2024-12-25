@@ -1,4 +1,4 @@
-import { Env } from '../types';
+import { Env } from '../types/index';
 
 export async function verifyAuth(request: Request, env: Env) {
   const authHeader = request.headers.get('Authorization');
