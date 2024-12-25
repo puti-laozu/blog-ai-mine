@@ -1,0 +1,20 @@
+-- D1 数据库结构
+CREATE TABLE posts (
+  id INTEGER PRIMARY KEY,
+  title TEXT NOT NULL,
+  content TEXT NOT NULL,
+  slug TEXT UNIQUE NOT NULL,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE tags (
+  id INTEGER PRIMARY KEY,
+  name TEXT UNIQUE NOT NULL
+);
+
+CREATE TABLE post_tags (
+  post_id INTEGER REFERENCES posts(id),
+  tag_id INTEGER REFERENCES tags(id),
+  PRIMARY KEY (post_id, tag_id)
+); 
