@@ -2,21 +2,21 @@ import { NextResponse } from 'next/server';
 import { z } from 'zod';
 
 const commentSchema = z.object({
-  postId: z.number(),
-  content: z.string().min(1),
-  author: z.string().min(1),
+  content: z.string().min(1).max(500),
+  author: z.string().min(1).max(50),
+  postId: z.number().positive()
 });
 
 export async function POST(request: Request) {
   try {
-    const json = await request.json();
-    const body = commentSchema.parse(json);
+    const body = await request.json();
+    const validatedData = commentSchema.parse(body);
 
     // 这里将通过 Worker API 保存评论
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/comments`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body),
+      body: JSON.stringify(validatedData),
     });
 
     if (!response.ok) {
@@ -25,9 +25,9 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    return NextResponse.json(
-      { error: 'Invalid request' },
-      { status: 400 }
-    );
+    if (error instanceof z.ZodError) {
+      return NextResponse.json({ error: 'Invalid input' }, { status: 400 });
+    }
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 } 
