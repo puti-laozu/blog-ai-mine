@@ -12,7 +12,7 @@ export default function PostEditor({ post, onSubmit }: PostEditorProps) {
   const [content, setContent] = useState(post?.content || '');
   const [excerpt, setExcerpt] = useState(post?.excerpt || '');
   const [slug, setSlug] = useState(post?.slug || '');
-  const [status, setStatus] = useState(post?.status || 'draft');
+  const [status, setStatus] = useState<'draft' | 'published'>(post?.status || 'draft');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -46,17 +46,6 @@ export default function PostEditor({ post, onSubmit }: PostEditorProps) {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700">URL 别名</label>
-        <input
-          type="text"
-          value={slug}
-          onChange={(e) => setSlug(e.target.value)}
-          className="mt-1 block w-full border rounded-md shadow-sm p-2"
-          required
-        />
-      </div>
-
-      <div>
         <label className="block text-sm font-medium text-gray-700">摘要</label>
         <textarea
           value={excerpt}
@@ -79,7 +68,7 @@ export default function PostEditor({ post, onSubmit }: PostEditorProps) {
         <label className="block text-sm font-medium text-gray-700">状态</label>
         <select
           value={status}
-          onChange={(e) => setStatus(e.target.value)}
+          onChange={(e) => setStatus(e.target.value as 'draft' | 'published')}
           className="mt-1 block w-full border rounded-md shadow-sm p-2"
         >
           <option value="draft">草稿</option>

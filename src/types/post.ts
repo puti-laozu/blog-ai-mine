@@ -3,7 +3,8 @@ export interface Post {
   title: string;
   slug: string;
   content: string;
-  excerpt: string;
+  excerpt?: string;
+  status: 'draft' | 'published';
   published_at: number;
   updated_at?: number;
   views: number;
