@@ -1,12 +1,17 @@
+export interface Env {
+  DB: D1Database;
+  KV: KVNamespace;
+  JWT_SECRET: string;
+}
+
 export interface Post {
-  id: number;
+  id: string;
   title: string;
   content: string;
   slug: string;
-  status: PostStatus;
-  published_at: number;
+  status: 'draft' | 'published';
   created_at: number;
-  updated_at: number;
+  updated_at?: number;
 }
 
 export type PostStatus = 'draft' | 'published';
