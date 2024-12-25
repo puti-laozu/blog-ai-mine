@@ -1,32 +1,21 @@
-# 环境变量
+# Dependencies
+node_modules
+.pnpm-store
+
+# Build output
+dist
+.next
+out
+
+# Environment variables
 .env
 .env.local
 .env.*.local
 
-# 依赖
-node_modules/
-.pnpm-store/
+# Editor directories
+.idea
+.vscode
 
-# 构建输出
-dist/
-build/
-
-# 日志
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-# 编辑器目录
-.idea/
-.vscode/
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
-# 操作系统
+# System files
 .DS_Store
 Thumbs.db 

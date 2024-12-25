@@ -19,7 +19,9 @@
     "@tailwindcss/typography": "^0.5.10",
     "tailwindcss": "^3.4.1",
     "postcss": "^8.4.35",
-    "autoprefixer": "^10.4.17"
+    "autoprefixer": "^10.4.17",
+    "easymde": "^2.18.0",
+    "@types/easymde": "^2.0.4"
   },
   "devDependencies": {
     "typescript": "^5.3.3",

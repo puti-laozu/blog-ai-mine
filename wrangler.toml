@@ -3,6 +3,10 @@ name = "my-blog"
 compatibility_date = "2024-01-01"
 main = "src/worker.ts"
 
+[build]
+command = "pnpm install && pnpm build"
+output_dir = "dist"
+
 [vars]
 BLOG_TITLE = "My Blog"
 BLOG_DESCRIPTION = "A personal blog powered by Cloudflare"
