@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && npm run build:worker",
-    "build:worker": "cd worker && npm install && wrangler deploy",
+    "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "wrangler pages deploy .next --project-name=blog-ai-mine"
   },
   "dependencies": {
     "next": "14.1.0",

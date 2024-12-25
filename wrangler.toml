@@ -14,8 +14,11 @@ binding = "BLOG_CACHE"
 id = "${CLOUDFLARE_KV_NAMESPACE_ID}"
 
 [build]
-command = "npm run build:worker"
-cwd = "worker"
+command = "npm run build"
 
 [site]
-bucket = "./.next" 
+bucket = ".next"
+pages_build_output_dir = ".next"
+
+[env.production]
+workers_dev = true 
