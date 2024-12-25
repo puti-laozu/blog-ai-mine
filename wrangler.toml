@@ -1,0 +1,12 @@
+name = "blog-ai-mine"
+compatibility_date = "2023-12-25"
+main = "worker/src/index.ts"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "blog-db"
+database_id = "927b7369-cae7-40ad-9aa2-92a306513b6"
+
+[[kv_namespaces]]
+binding = "BLOG_CACHE"
+id = "f1a95ecbf5f74a39af3bd758b116f67a" 
