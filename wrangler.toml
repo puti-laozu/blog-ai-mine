@@ -1,37 +1,17 @@
 # Cloudflare 配置示例
 name = "my-blog"
 compatibility_date = "2024-01-01"
-main = "src/index.ts"
+main = "src/worker.ts"
 
 [vars]
 BLOG_TITLE = "My Blog"
 BLOG_DESCRIPTION = "A personal blog powered by Cloudflare"
-
-[build]
-command = "pnpm build"
-watch_dir = "src"
-
-[site]
-bucket = "./dist"
-entry-point = "workers-site"
 
 [[d1_databases]]
 binding = "DB"
 database_name = "blog_db"
 database_id = "your-database-id"
 
-[[r2_buckets]]
-binding = "ASSETS"
-bucket_name = "blog-assets"
-
 [[kv_namespaces]]
 binding = "KV"
-id = "your-kv-namespace-id"
-
-[env.production]
-routes = [
-  { pattern = "your-domain.com/*", zone_id = "your_zone_id" }
-]
-
-[triggers]
-crons = ["0 0 * * *"] # 每日备份 
+id = "your-kv-namespace-id" 

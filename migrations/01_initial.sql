@@ -1,17 +1,18 @@
 -- 创建文章表
 CREATE TABLE IF NOT EXISTS posts (
-  id TEXT PRIMARY KEY,
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
   title TEXT NOT NULL,
-  slug TEXT UNIQUE NOT NULL,
   content TEXT NOT NULL,
-  excerpt TEXT,
+  slug TEXT NOT NULL UNIQUE,
+  status TEXT CHECK(status IN ('draft', 'published')) NOT NULL DEFAULT 'draft',
   published_at INTEGER NOT NULL,
-  updated_at INTEGER,
-  views INTEGER DEFAULT 0,
-  tags TEXT,
-  category TEXT,
-  status TEXT DEFAULT 'draft'
+  created_at INTEGER NOT NULL DEFAULT (unixepoch()),
+  updated_at INTEGER NOT NULL DEFAULT (unixepoch())
 );
+
+CREATE INDEX IF NOT EXISTS idx_posts_slug ON posts(slug);
+CREATE INDEX IF NOT EXISTS idx_posts_status ON posts(status);
+CREATE INDEX IF NOT EXISTS idx_posts_published_at ON posts(published_at);
 
 -- 创建评论表
 CREATE TABLE IF NOT EXISTS comments (
