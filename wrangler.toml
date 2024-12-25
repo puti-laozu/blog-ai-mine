@@ -7,6 +7,13 @@ main = "src/worker.ts"
 command = "pnpm install && pnpm build"
 output_dir = "dist"
 
+[build.upload]
+format = "service-worker"
+
+[site]
+bucket = "./public"
+pages_build_output_dir = "dist"
+
 [vars]
 BLOG_TITLE = "My Blog"
 BLOG_DESCRIPTION = "A personal blog powered by Cloudflare"

@@ -21,7 +21,8 @@
     "postcss": "^8.4.35",
     "autoprefixer": "^10.4.17",
     "easymde": "^2.18.0",
-    "@types/easymde": "^2.0.4"
+    "@codemirror/state": "^6.0.0",
+    "@codemirror/view": "^6.0.0"
   },
   "devDependencies": {
     "typescript": "^5.3.3",
