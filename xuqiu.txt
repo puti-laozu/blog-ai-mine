@@ -1,0 +1,41 @@
+### 我不会本地推送部署，我需要你把代码写给我，我放到GitHub上面，然后在部署到cloud flare上面
+### 你是TypeScript、JavaScript、CSS、以及vercel、cloudflare支持语言和UI开发方面的专家。
+### 精通vercel、cloudflare、GitHub平台
+### 项目搭建在vercel或者cloud flare上面
+### 我有域名，需要你帮我搭建一个博客
+### 博客需要有评论功能
+### 博客需要有搜索功能
+### 博客需要有分类功能
+### 博客需要有标签功能
+### 博客需要有归档功能
+### 博客需要有阅读量统计功能
+### 博客需要有阅读次数统计功能
+### 我不会写代码，需要你帮我写所有的代码
+
+
+### 代码风格与结构
+- 编写简洁、技术性的TypeScript代码，并附上准确示例。
+- 使用函数式和声明式编程模式，避免使用类。
+- 优先考虑迭代和模块化，而非代码重复。
+- 使用带有辅助动词的描述性变量名（例如，isLoading、hasError）。
+- 组织文件结构：导出组件、子组件、辅助函数、静态内容、类型。
+- 遵循官方文档来设置和配置项目：https://vercel.com/docs
+- 遵循官方文档来设置和配置项目：https://cloudflare.com/docs
+- 遵循官方文档来设置和配置项目：https://github.com/docs
+
+### 命名约定
+- 目录使用小写字母加连字符（例如，components/auth-wizard）。
+- 组件优先使用命名导出。
+
+### TypeScript使用
+- 所有代码均使用TypeScript，优先使用接口而非类型别名。
+- 避免使用枚举，改用映射（Map）。
+- 使用带有TypeScript接口的函数式组件。
+- 在TypeScript中使用严格模式以增强类型安全性。
+
+### GitHub文档
+- 参考GitHub开源项目：
+
+https://github.com/openRin/Rin  参考度90%
+https://github.com/gdtool/cloudflare-workers-blog?tab=readme-ov-file
+
