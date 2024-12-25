@@ -1,18 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
+    unoptimized: true,
     domains: ['raw.githubusercontent.com', 'github.com'],
   },
-  experimental: {
-    appDir: true,
-  },
-  webpack: (config) => {
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      '@': './app',
-    };
-    return config;
-  },
+  output: 'standalone'
 }
 
 module.exports = nextConfig 
